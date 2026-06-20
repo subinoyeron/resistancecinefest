@@ -2,11 +2,32 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
-const HERO_TAGLINE =
-  "Join us for films, conversations, and artivism centering resistance, memory, and justice.";
+const TICKET_URL =
+  "https://tickify.live/event/resistance-cinema-fest-2nd-edition/";
 
 const VIDEO_SRC = "/resistancevideoheader.mp4";
 const LOGO_SRC = "/logo/Cinema Fest Logo.svg";
+
+function ArrowIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        d="M3 10L10 3M10 3H4.5M10 3V8.5"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -78,14 +99,20 @@ export function Hero() {
         />
       </div>
 
-      <motion.p
-        className="absolute bottom-16 left-1/2 z-10 max-w-[700px] -translate-x-1/2 px-6 text-center text-xl font-medium leading-relaxed text-white md:text-2xl"
+      <motion.a
+        href={TICKET_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group absolute bottom-16 left-1/2 z-10 inline-flex w-auto -translate-x-1/2 items-center gap-4 rounded-full bg-white px-6 py-4 font-bold text-[#181818] transition-[transform,box-shadow,background-color] duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:bg-[#F7F7F7] hover:shadow-[0_16px_40px_rgb(24_24_24_/_25%)]"
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.85, delay: 0.55, ease: "easeOut" }}
       >
-        {HERO_TAGLINE}
-      </motion.p>
+        <span className="text-lg">Get the Ticket</span>
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F1231B] text-white transition-transform duration-300 ease-out group-hover:scale-105">
+          <ArrowIcon />
+        </span>
+      </motion.a>
     </section>
   );
 }
