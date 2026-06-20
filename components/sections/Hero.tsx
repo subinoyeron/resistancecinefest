@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 const HERO_TAGLINE =
   "Join us for films, conversations, and artivism centering resistance, memory, and justice.";
 
-const VIDEO_SRC = "/videos/xYbewqDCOKJ2VidrYZnzmtH6yE.mp4";
+const VIDEO_SRC = "/resistancevideoheader.mp4";
 const LOGO_SRC = "/logo/Cinema Fest Logo.svg";
 
 export function Hero() {
@@ -28,13 +28,25 @@ export function Hero() {
           muted
           loop
           playsInline
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover [filter:brightness(0.85)_contrast(1.075)_saturate(0.95)]"
           aria-hidden
         >
           <source src={VIDEO_SRC} type="video/mp4" />
         </video>
         <div
-          className="absolute inset-0 bg-[rgba(24,24,24,0.35)]"
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.4), rgba(0,0,0,0.475))",
+          }}
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at center, transparent 35%, rgba(0,0,0,0.175) 100%)",
+          }}
           aria-hidden
         />
       </motion.div>
