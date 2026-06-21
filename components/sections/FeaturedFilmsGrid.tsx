@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 
 const FEATURED_FILMS = [
   {
@@ -11,8 +12,6 @@ const FEATURED_FILMS = [
     runtime: "90 min",
     director: "Patricio Guzmán",
     country: "Chile",
-    theme:
-      "Memory, disappearance, and the search for truth in the Atacama Desert.",
   },
   {
     title: "A Taxi Driver",
@@ -21,8 +20,6 @@ const FEATURED_FILMS = [
     runtime: "137 min",
     director: "Jang Hoon",
     country: "South Korea",
-    theme:
-      "A civilian’s accidental witness to the Gwangju Uprising and state violence.",
   },
   {
     title: "The Trial of the Chicago 7",
@@ -31,37 +28,40 @@ const FEATURED_FILMS = [
     runtime: "130 min",
     director: "Aaron Sorkin",
     country: "United States",
-    theme:
-      "Protest, criminalisation, and political trials in democratic systems.",
   },
   {
-    title: "The Act of Killing",
-    poster: "/images/film_posters/actofkilling poster.jpg",
-    year: "2012",
-    runtime: "122 min",
-    director: "Joshua Oppenheimer",
-    country: "Indonesia / Denmark",
-    theme: "Perpetrators of mass violence confront their own histories.",
+    title: "No Fire Zone: The Killing Fields of Sri Lanka",
+    poster: "/images/film_posters/nofirezoneposter.jpg",
+    year: "2013",
+    runtime: "93 min",
+    director: "Callum Macrae",
+    country: "Sri Lanka / United Kingdom",
   },
   {
-    title: "When the Day Comes",
-    poster: "/images/film_posters/whenthedaycomes.jpg",
-    year: "2017",
-    runtime: "129 min",
-    director: "Jang Joon-hwan",
-    country: "South Korea",
-    theme: "State torture, resistance, and the democratic struggle of 1987.",
+    title: "Reborn Eyes: Story of a Movement in Resistance",
+    poster: "/images/film_posters/Reborn Eyesposter.jpg",
+    year: "2023",
+    runtime: "35 min",
+    director: "Lucía Guerrero",
+    country: "Colombia",
   },
   {
-    title: "Muktir Gaan",
-    poster: "/images/film_posters/muktirgan.jpg",
-    year: "1995",
-    runtime: "70 min",
-    director: "Tareque Masud & Catherine Masud",
+    title: "Hip Hop as Resistance in Kenya — The Story of Bahati Hezborn",
+    poster: "/images/film_posters/Hip Hop as Resistance in Kenya poster.jpg",
+    year: "",
+    runtime: "",
+    director: "Annasofie Flamand, Calvin Onvango",
+    country: "Kenya",
+  },
+  {
+    title: "Eyes That Speak",
+    poster: "/images/film_posters/eyesthatspeakposter.jpg",
+    year: "",
+    runtime: "16 min",
+    director: "Mosfiqur Rahman Johan",
     country: "Bangladesh",
-    theme: "Liberation, collective memory, and revolutionary cultural resistance.",
   },
-] as const;
+];
 
 const cardHover =
   "transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_48px_rgb(241_35_27_/_20%)]";
@@ -87,8 +87,11 @@ export function FeaturedFilmsGrid() {
     <section
       id="featured-films"
       aria-labelledby="featured-films-heading"
-      className="w-full bg-cream px-8 py-24 md:px-16 md:py-32 lg:px-20"
+      className="relative w-full overflow-hidden bg-cream px-8 py-24 md:px-16 md:py-32 lg:px-20"
     >
+      <NoiseOverlay />
+
+      <div className="relative z-10">
       <motion.div className="mb-12 md:mb-14" {...fadeUp()}>
         <h2
           id="featured-films-heading"
@@ -106,7 +109,12 @@ export function FeaturedFilmsGrid() {
         {FEATURED_FILMS.map((film, index) => (
           <motion.article
             key={film.title}
-            className={`overflow-hidden rounded-[28px] border border-black/12 bg-white shadow-[0_8px_32px_rgb(24_24_24_/_6%)] ${cardHover}`}
+            className={`overflow-hidden rounded-[28px] border border-black/12 bg-white shadow-[0_8px_32px_rgb(24_24_24_/_6%)] ${cardHover} ${
+              index === FEATURED_FILMS.length - 1 &&
+              FEATURED_FILMS.length % 3 === 1
+                ? "lg:col-start-2"
+                : ""
+            }`}
             {...fadeUp(0.06 + index * 0.04)}
           >
             <div className="relative h-[520px] w-full">
@@ -123,11 +131,15 @@ export function FeaturedFilmsGrid() {
               <h3 className="text-3xl font-bold text-charcoal">{film.title}</h3>
 
               <dl className="mt-3 space-y-1">
-                <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm uppercase tracking-wide text-charcoal/70">
-                  <span>{film.year}</span>
-                  <span aria-hidden>·</span>
-                  <span>{film.runtime}</span>
-                </div>
+                {(film.year || film.runtime) && (
+                  <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm uppercase tracking-wide text-charcoal/70">
+                    {film.year ? <span>{film.year}</span> : null}
+                    {film.year && film.runtime ? (
+                      <span aria-hidden>·</span>
+                    ) : null}
+                    {film.runtime ? <span>{film.runtime}</span> : null}
+                  </div>
+                )}
                 <div className="text-sm uppercase tracking-wide text-charcoal/70">
                   <span className="sr-only">Director: </span>
                   {film.director}
@@ -137,13 +149,10 @@ export function FeaturedFilmsGrid() {
                   {film.country}
                 </div>
               </dl>
-
-              <p className="mt-4 text-lg leading-tight text-charcoal">
-                {film.theme}
-              </p>
             </div>
           </motion.article>
         ))}
+      </div>
       </div>
     </section>
   );

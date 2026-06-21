@@ -1,8 +1,11 @@
 import Image from "next/image";
 import { type ReactNode } from "react";
+import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 
 const MIDDLE_TEXT =
   "Resistance Cinema Fest is a creative intervention on torture prevention, transitional justice, and solidarity — bringing together films, conversations, and artivism to build collective memory and imagine accountability.";
+
+const BIOSCOPE_EMBLEM_SRC = "/images/bioscopecinefest.webp";
 
 const PARTNER_LOGO_BASE = "/partnerlogos";
 
@@ -97,9 +100,11 @@ export function SiteClosing() {
     <section
       id="closing"
       aria-label="Partners and footer"
-      className="w-full bg-cream px-8 py-24 md:px-16 md:py-28 lg:px-20"
+      className="relative w-full overflow-hidden bg-cream px-8 py-24 md:px-16 md:py-28 lg:px-20"
     >
-      <div className="flex w-full items-center justify-center text-center">
+      <NoiseOverlay />
+
+      <div className="relative z-10 flex w-full items-center justify-center text-center">
         <div className="w-full max-w-[1100px]">
           <PartnerGroup title="Conveyed by">
             <ul className="flex flex-wrap items-center justify-center gap-12">
@@ -167,56 +172,50 @@ export function SiteClosing() {
         </div>
       </div>
 
-      <hr className="my-16 border-t border-black/15" />
-
-      <p className="mx-auto max-w-[900px] text-center text-lg leading-relaxed text-charcoal/75 md:text-xl">
-        {MIDDLE_TEXT}
-      </p>
-
-      <hr className="my-16 border-t border-black/15" />
-
-      <footer className="grid grid-cols-1 gap-10 text-sm text-charcoal/70 md:grid-cols-3 md:gap-8 md:text-base">
-        <div className="space-y-1 md:text-left">
-          <p>26 June 2026</p>
-          <p>2:30 PM – 8:00 PM</p>
-          <p>TSC, Dhaka University</p>
+      <div className="relative -mx-8 -mb-24 mt-16 md:-mx-16 md:-mb-28 md:mt-20 lg:-mx-20">
+        <div className="relative z-20 flex justify-center">
+          <Image
+            src={BIOSCOPE_EMBLEM_SRC}
+            alt="Bioscope Cine Fest emblem"
+            width={220}
+            height={172}
+            className="relative h-auto w-[220px] -mb-[86px] object-contain"
+          />
         </div>
 
-        <div className="space-y-1 text-center">
-          <p>© 2026 Resistance Cinema Fest</p>
-          <p>Organised by Activate Rights</p>
-        </div>
-
-        <nav
-          aria-label="Social and contact links"
-          className="flex flex-col gap-2 md:items-end md:text-right"
+        <footer
+          aria-label="Festival information and contact"
+          className="relative w-full min-h-[520px] overflow-hidden rounded-t-[24px] bg-[#181818] px-8 pb-20 pt-28 text-white md:px-16 md:pb-24 md:pt-32 lg:px-20"
         >
-          <a
-            href="#"
-            className="text-charcoal transition-colors hover:text-red hover:underline"
-          >
-            Instagram
-          </a>
-          <a
-            href="#"
-            className="text-charcoal transition-colors hover:text-red hover:underline"
-          >
-            Facebook
-          </a>
-          <a
-            href="mailto:shoeb@activaterights.org"
-            className="text-charcoal transition-colors hover:text-red hover:underline"
-          >
-            Email
-          </a>
-          <a
-            href="mailto:shoeb@activaterights.org"
-            className="text-charcoal transition-colors hover:text-red hover:underline"
-          >
-            shoeb@activaterights.org
-          </a>
-        </nav>
-      </footer>
+          <NoiseOverlay />
+
+          <div className="relative z-10 grid grid-cols-1 gap-40 md:grid-cols-2 md:gap-56">
+            <div>
+              <p className="max-w-[700px] text-xl font-medium leading-[1.2] md:text-3xl">
+                {MIDDLE_TEXT}
+              </p>
+            </div>
+
+            <div className="justify-self-end text-base leading-relaxed opacity-80 md:text-lg">
+              <div className="space-y-1">
+                <p>26 June 2026</p>
+                <p>2:30 PM – 8:00 PM</p>
+                <p>TSC, Dhaka University</p>
+              </div>
+
+              <div className="mt-10 space-y-1">
+                <p>© 2026 Resistance Cinema Fest</p>
+                <a
+                  href="mailto:shoeb@activaterights.org"
+                  className="transition-colors hover:text-white hover:underline"
+                >
+                  email: shoeb@activaterights.org
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
     </section>
   );
 }

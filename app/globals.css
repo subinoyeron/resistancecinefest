@@ -253,3 +253,43 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
+@keyframes noiseMove {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-2%, 2%);
+  }
+
+  50% {
+    transform: translate(2%, -2%);
+  }
+
+  75% {
+    transform: translate(-1%, -1%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxODAnIGhlaWdodD0nMTgwJz48ZmlsdGVyIGlkPSdnoSc+PGZlVHVyYnVsZW5jZSB0eXBlPSdmcmFjdGFsTm9pc2UnIGJhc2VGcmVxdWVuY3k9JzAuOTInIG51bU9jdGF2ZXM9JzQnIHN0aXRjaFRpbGVzPSdzdGl0Y2gnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCgjZ24pJy8+PC9zdmc+");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  animation: noiseMove 0.25s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noise-overlay {
+    animation: none;
+  }
+}
