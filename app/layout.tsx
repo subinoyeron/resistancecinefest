@@ -24,7 +24,10 @@ export default function RootLayout({
       lang="en"
       className={`${radioCanada.variable} h-full scroll-smooth`}
     >
-      <body className="min-h-full bg-cream font-body text-charcoal antialiased">
+      <body
+        suppressHydrationWarning
+        className="min-h-full bg-cream font-body text-charcoal antialiased"
+      >
         {children}
       </body>
     </html>

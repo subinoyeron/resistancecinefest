@@ -135,6 +135,9 @@ export function SiteClosing() {
                 <PartnerLogoItem name="Sapran" filename="sapranlogo.svg" />
               </li>
               <li>
+                <PartnerLogoItem name="Chitra" filename="chitralogooo.webp" />
+              </li>
+              <li>
                 <PartnerLogoItem
                   name="Surge Bangladesh"
                   filename="Surgelogo.webp"
