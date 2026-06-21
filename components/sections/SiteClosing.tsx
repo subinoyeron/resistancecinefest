@@ -3,7 +3,7 @@ import { type ReactNode } from "react";
 import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 
 const MIDDLE_TEXT =
-  "Resistance Cinema Fest is a creative intervention on torture prevention, transitional justice, and solidarity — bringing together films, conversations, and artivism to build collective memory and imagine accountability.";
+  "Resistance Cinema Fest is a creative intervention and caravan film fest hosted by Activate Rights, featuring solidarity screenings of films on people's resistance around the world — bringing together films, conversations, and artivism to build collective memory, protect human rights, and imagine accountability.";
 
 const BIOSCOPE_EMBLEM_SRC = "/images/bioscopecinefest.webp";
 
@@ -209,10 +209,10 @@ export function SiteClosing() {
               <div className="mt-10 space-y-1">
                 <p>© 2026 Resistance Cinema Fest</p>
                 <a
-                  href="mailto:shoeb@activaterights.org"
+                  href="mailto:info@activaterights.org"
                   className="transition-colors hover:text-white hover:underline"
                 >
-                  email: shoeb@activaterights.org
+                  email: info@activaterights.org
                 </a>
               </div>
             </div>
