@@ -6,60 +6,67 @@ import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 
 const FEATURED_FILMS = [
   {
+    title: "The Trial of the Chicago 7",
+    poster: "/images/film_posters/chicagotrialposter.jpg",
+    screeningTime: "11:00 AM – 1:10 PM",
+    year: "2020",
+    runtime: "130 min",
+    director: "Aaron Sorkin",
+    country: "USA",
+  },
+  {
     title: "Nostalgia for the Light",
     poster: "/images/film_posters/nostalgiafilmposter.jpg",
+    screeningTime: "2:30 PM – 4:00 PM",
     year: "2010",
     runtime: "90 min",
     director: "Patricio Guzmán",
     country: "Chile",
   },
   {
-    title: "A Taxi Driver",
-    poster: "/images/film_posters/taxidriverfilmposter.jpg",
-    year: "2017",
-    runtime: "137 min",
-    director: "Jang Hoon",
-    country: "South Korea",
-  },
-  {
-    title: "The Trial of the Chicago 7",
-    poster: "/images/film_posters/chicagotrialposter.jpg",
-    year: "2020",
-    runtime: "130 min",
-    director: "Aaron Sorkin",
-    country: "United States",
-  },
-  {
-    title: "No Fire Zone: The Killing Fields of Sri Lanka",
-    poster: "/images/film_posters/nofirezoneposter.jpg",
-    year: "2013",
-    runtime: "93 min",
-    director: "Callum Macrae",
-    country: "Sri Lanka / United Kingdom",
-  },
-  {
     title: "Reborn Eyes: Story of a Movement in Resistance",
     poster: "/images/film_posters/Reborn Eyesposter.jpg",
+    screeningTime: "4:00 PM – 4:35 PM",
     year: "2023",
     runtime: "35 min",
     director: "Lucía Guerrero",
     country: "Colombia",
   },
   {
-    title: "Hip Hop as Resistance in Kenya — The Story of Bahati Hezborn",
+    title: "Baba Taifa: Hip Hop as Resistance in Kenya — The Story of Bahati Hezborn",
     poster: "/images/film_posters/Hip Hop as Resistance in Kenya poster.jpg",
+    screeningTime: "4:35 PM – 4:45 PM",
     year: "",
-    runtime: "",
-    director: "Annasofie Flamand, Calvin Onvango",
+    runtime: "10 min",
+    director: "Annasofie Flamand & Calvin Onvango",
     country: "Kenya",
   },
   {
     title: "Eyes That Speak",
     poster: "/images/film_posters/eyesthatspeakposter.jpg",
+    screeningTime: "4:45 PM – 5:01 PM",
     year: "",
     runtime: "16 min",
     director: "Mosfiqur Rahman Johan",
     country: "Bangladesh",
+  },
+  {
+    title: "A Taxi Driver",
+    poster: "/images/film_posters/taxidriverfilmposter.jpg",
+    screeningTime: "5:01 PM – 7:18 PM",
+    year: "2017",
+    runtime: "137 min",
+    director: "Jang Hoon",
+    country: "South Korea",
+  },
+  {
+    title: "No Fire Zone: The Killing Fields of Sri Lanka",
+    poster: "/images/film_posters/nofirezoneposter.jpg",
+    screeningTime: "7:18 PM – 8:51 PM",
+    year: "2013",
+    runtime: "93 min",
+    director: "Callum Macrae",
+    country: "Sri Lanka / UK",
   },
 ];
 
@@ -130,7 +137,16 @@ export function FeaturedFilmsGrid() {
             <div className="p-6">
               <h3 className="text-3xl font-bold text-charcoal">{film.title}</h3>
 
-              <dl className="mt-3 space-y-1">
+              <div className="mt-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-charcoal/55">
+                  Screening
+                </p>
+                <p className="text-sm font-bold text-charcoal">
+                  {film.screeningTime}
+                </p>
+              </div>
+
+              <dl className="mt-2 space-y-1">
                 {(film.year || film.runtime) && (
                   <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm uppercase tracking-wide text-charcoal/70">
                     {film.year ? <span>{film.year}</span> : null}
