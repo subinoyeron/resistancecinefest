@@ -9,9 +9,33 @@ const radioCanada = Radio_Canada_Big({
 });
 
 export const metadata: Metadata = {
-  title: "Resistance Cinema Fest 2026",
+  title: "Resistance Cinema Fest",
   description:
-    "A Creative Intervention on Torture Prevention, Transitional Justice, and Solidarity",
+    "A creative intervention and caravan film fest hosted by Activate Rights, featuring solidarity screenings of films on people's resistance around the world.",
+  openGraph: {
+    title: "Resistance Cinema Fest",
+    description:
+      "Films, conversations, and artivism centering resistance, memory, and justice.",
+    url: "https://resistancecinefest.activaterights.org/",
+    siteName: "Resistance Cinema Fest",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Resistance Cinema Fest",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resistance Cinema Fest",
+    description:
+      "Films, conversations, and artivism centering resistance, memory, and justice.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
