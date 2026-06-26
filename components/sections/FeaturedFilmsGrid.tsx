@@ -59,15 +59,6 @@ const FEATURED_FILMS = [
     director: "Jang Hoon",
     country: "South Korea",
   },
-  {
-    title: "No Fire Zone: The Killing Fields of Sri Lanka",
-    poster: "/images/film_posters/nofirezoneposter.jpg",
-    screeningTime: "7:18 PM – 8:51 PM",
-    year: "2013",
-    runtime: "93 min",
-    director: "Callum Macrae",
-    country: "Sri Lanka / UK",
-  },
 ];
 
 const cardHover =
